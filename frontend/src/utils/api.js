@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api`;
 
 export async function apiCall(endpoint, options = {}) {
   const token = localStorage.getItem('student_portal_token');
@@ -33,7 +33,7 @@ export async function apiCall(endpoint, options = {}) {
 }
 
 export async function loginUser(username, password) {
-  const response = await fetch('http://localhost:5000/api/auth/login', {
+const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })
@@ -44,7 +44,7 @@ export async function loginUser(username, password) {
 }
 
 export async function registerUser(userData) {
-  const response = await fetch('http://localhost:5000/api/auth/register', {
+  const response = await fetch(`${API_BASE_URL}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userData)
