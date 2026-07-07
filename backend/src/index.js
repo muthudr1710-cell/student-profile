@@ -11,10 +11,12 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend dev server URL
+  origin: [
+    'http://localhost:5173',
+    'https://student-profile-x9w8.vercel.app'
+  ],
   credentials: true
 }));
-
 // Parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
